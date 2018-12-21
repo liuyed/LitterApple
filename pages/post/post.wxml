@@ -14,19 +14,19 @@
 </view>
 <view class='post-container'>
   <view class='post-author-date'>
-    <image src='/images/avatar/avatar-5.png'></image>
-    <text>Jan 28 2017</text>
+    <image src="{{ postData.avatar }}" />
+    <text>{{postData.date}}</text>
   </view>
-  <text class='post-title'>小时候的冰棍儿与雪糕</text>
-  <image class='post-image' src='/images/post/post-4.jpg' mode='aspectFill'></image>
-  <text class='post-content'>冰棍和雪糕绝对不是一个东西，3到5毛钱的雪糕犹如现在的哈根达斯，而5分1毛的冰棍儿就像现在的老冰棒。时过境迁，...</text>
+  <text class='post-title'>{{postData.title}}</text>
+  <image class='post-image' src='{{postData.postImg}}' mode='aspectFill'></image>
+  <text class='post-content'>{{postData.content}}</text>
   <view class='post-like'>
     <image src='/images/icon/wx_app_collect.png'></image>
-    <text>108</text>
+    <text>{{postData.collectionNum}}</text>
     <image src='/images/icon/wx_app_view.png'></image>
-    <text>8</text>
+    <text>{{postData.readingNum}}</text>
     <image src='/images/icon/wx_app_message.png'></image>
-    <text>10</text>
+    <text>{{postData.commentNum}}</text>
   </view>
 </view>
 <view class='post-container'>
