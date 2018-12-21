@@ -13,8 +13,12 @@ Page({
   handleTap2:() => {
     console.log('触发handleTap2');
   },
-  handleTap3:() => {
+  handleTap3: (type, timeStamp, target, currentTarget) => {
     console.log('触发handleTap3');
+    console.log(type);
+    console.log(timeStamp);
+    console.log(target);
+    console.log(currentTarget);
   },
 
   /**

@@ -4,6 +4,6 @@
   outer view
   <view id="middle" bindtap="handleTap2">
     middle view
-    <view id="inner" catchtap="handleTap3">inner view</view>
+    <view id="inner" catchtap="handleTap3" data-test="testData">inner view</view>
   </view>
 </view>
