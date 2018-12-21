@@ -1,0 +1,9 @@
+<!--pages/test/test.wxml-->
+<!-- bind事件绑定不会阻止冒泡事件向上冒泡，catch事件绑定可以阻止冒泡事件向上冒泡。 -->
+<view id="outer" bindtap="handleTap1">
+  outer view
+  <view id="middle" bindtap="handleTap2">
+    middle view
+    <view id="inner" catchtap="handleTap3">inner view</view>
+  </view>
+</view>
