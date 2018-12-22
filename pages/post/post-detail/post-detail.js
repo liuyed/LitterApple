@@ -1,4 +1,5 @@
 // pages/post/post-detail/post-detail.js
+import {DBPost} from "../../../db/DBPost.js";
 Page({
 
   /**
@@ -12,14 +13,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
+    let id  = options.id;
+    this.dbPost = new DBPost(id);
+    this.postData = this.dbPost.getPostItemById().data;
+    this.setData({
+      post:this.postData
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.setNavigationBarTitle({
+      title:this.postData.title
+    })
   },
 
   /**

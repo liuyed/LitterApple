@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
+  "navigationBarTextStyle":"white",
   "navigationBarTitleText": "热门文章"
 }

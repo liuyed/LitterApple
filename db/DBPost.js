@@ -21,8 +21,9 @@
 // }
 
 class DBPost {
-  constructor(url) {
+  constructor(postId) {
     this.storageKeyName = 'postList';
+    this.postId = postId;
   }
   getAllPostData() {
     var res = wx.getStorageSync(this.storageKeyName);
@@ -36,6 +37,18 @@ class DBPost {
   execSetStorageSync(data) {
      wx.setStorageSync(this.stroageKeyName, data);
    }
+  getPostItemById(){
+    const postsData = this.getAllPostData();
+    let len = postsData.length;
+    for(let i=0; i<len;i++) {
+      if(postsData[i].postId == this.postId) {
+        return {
+          index: i,
+          data:postsData[i]
+        }
+      }
+    }
+  } 
 }
 export {
   DBPost

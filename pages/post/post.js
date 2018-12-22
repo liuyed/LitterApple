@@ -31,6 +31,13 @@ Page({
   onReady: function () {
     console.log('页面Ready');
   },
+  onTapToDetail:(event) =>{
+    console.log(event);
+    let postId = event.currentTarget.dataset.postId
+    wx.navigateTo({
+      url:`post-detail/post-detail?id=${postId}`
+    })
+  },
 
   /**
    * 生命周期函数--监听页面显示
