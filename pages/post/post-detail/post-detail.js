@@ -21,14 +21,41 @@ Page({
       post:this.postData
     })
   },
+  onCollectionTap:function() {
+    console.log(this)
+   let newData = this.dbPost.collect();
 
+   this.setData({
+     'post.collectionStatus': newData.collectionStatus,
+     'post.collectionNum':newData.collectionNum
+   });
+   wx.showToast({
+     title: newData.collectionStatus ? '收藏成功':'取消成功',
+     mask: true,
+     icon:'success',
+     duration:1500
+   });
+  },
+  onUpTap:function() {
+    let newData = this.dbPost.up();
+    this.setData({
+      'post.upStatus':newData.upStatus,
+      'post.upNum':newData.upNum
+    })
+  },
+  onCommitTap:function(event) {
+    var id = event.currentTarget.dataset.postId;
+    wx.navigateTo({
+      url: `../post-comment/post-comment?id=${id}`,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady:function () {
     wx.setNavigationBarTitle({
       title:this.postData.title
-    })
+    });
   },
 
   /**
