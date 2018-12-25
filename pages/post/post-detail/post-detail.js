@@ -20,6 +20,8 @@ Page({
     this.setData({
       post:this.postData
     })
+
+    this.addReadingTimes();
   },
   onCollectionTap:function() {
     console.log(this)
@@ -48,6 +50,9 @@ Page({
     wx.navigateTo({
       url: `../post-comment/post-comment?id=${id}`,
     })
+  },
+  addReadingTimes:function() {
+    this.dbPost.addReadingTimes();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

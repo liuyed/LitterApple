@@ -10,7 +10,9 @@ Page({
     keyboardInputValue:'',
     sendMoreMsgFlag:false,
     chooseFiles:[],
-    deleteIndex: -1
+    deleteIndex: -1,
+    recodingClass:'',
+    currentAudio:''
   },
 
   /**
@@ -138,6 +140,74 @@ Page({
       })
     },500)
     
+  },
+  recordStart:function(){
+    var that = this ;
+    this.setData({
+      recodingClass: 'recoding'
+    });
+
+    this.startTime = new Date();
+
+    wx.startRecord({
+      success:function(res){
+        let diff = (that.endTime - that.startTime)/1000;
+        diff = Math.ceil(diff);
+
+        that.submitVoiceComment({
+          url:res.tempFilePath,
+          timeLen: diff
+        })
+      },
+      fail:function(res){
+        console.log(res)
+      },
+      complete:function(res){
+        console.log(res);
+      }
+    })
+  },
+  recordEnd:function() {
+    this.setData({
+      recodingClass:''
+    })
+    this.endTime = new Date();
+    wx.stopRecord();
+  },
+  submitVoiceComment:function(audio) {
+    let newData = {
+      username:'悲酥',
+      avatar:'/images/avatar/avatar-5.png',
+      create_time:new Date().getTime()/1000,
+      content:{
+        txt:'',
+        img:[],
+        audio:audio
+      }
+    };
+    // 把评论存在缓存中
+    this.dbPost.newComment(newData);
+
+    this.showCommentSuccessToast();
+    this.bindCommentData();
+  },
+  playAudio:function(event) {
+    let url = event.currentTarget.dataset.url,
+    that = this;
+
+    if(url == this.data.currentAudio){
+      wx.pauseVoice();
+      this.data.currentAudio='';
+    }else {
+      this.data.currentAudio = url;
+      wx.playVoice({
+        filePath: url,
+        complete:function() {
+          that.data.currentAudio = '';
+        }
+
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

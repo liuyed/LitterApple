@@ -70,15 +70,17 @@ class DBPost {
     allPostData = this.getAllPostData();
 
     switch (category) {
+
       case 'collect':
-      if(!postData.collectionStatus) {
-        postData.collectionNUm++;
-        postData.collectionStatus = true;
-      }else{
-        postData.collectionNUm--;
-        postData.collectionStatus = false;
-      }
+        if(!postData.collectionStatus) {
+          postData.collectionNUm++;
+          postData.collectionStatus = true;
+        }else{
+          postData.collectionNUm--;
+          postData.collectionStatus = false;
+        }
       break;
+
       case 'up':
         if (!postData.upStatus) {
           postData.upNUm++;
@@ -87,11 +89,17 @@ class DBPost {
           postData.upNUm--;
           postData.upStatus = false;
         }
-        break;
-      case 'comment':
-      postData.comments.push(newComment);
-      postData.commentNum++;
       break;
+
+      case 'comment':
+        postData.comments.push(newComment);
+        postData.commentNum++;
+      break;
+
+      case 'reading':
+        postData.readingNum++;
+      break;
+
       default:
       break;
     }
@@ -121,6 +129,9 @@ class DBPost {
     }else{
       return 0;
     }
+  }
+  addReadingTimes() {
+    this.updatePostData('reading');
   }
 }
 export {
