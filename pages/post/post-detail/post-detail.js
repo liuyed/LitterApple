@@ -22,6 +22,7 @@ Page({
     })
 
     this.addReadingTimes();
+    this.setAniation();
   },
   onCollectionTap:function() {
     console.log(this)
@@ -39,11 +40,25 @@ Page({
    });
   },
   onUpTap:function() {
+    let that = this;
     let newData = this.dbPost.up();
     this.setData({
       'post.upStatus':newData.upStatus,
       'post.upNum':newData.upNum
-    })
+    });
+
+    this.animationUp.scale(2).step();
+
+    this.setData({
+      animationUp:this.animationUp.export()
+    });
+    setTimeout(function(){
+      that.animationUp.scale(1).step();
+
+      that.setData({
+        animationUp:that.animationUp.export()
+      })
+    },300)
   },
   onCommitTap:function(event) {
     var id = event.currentTarget.dataset.postId;
@@ -62,7 +77,19 @@ Page({
       title:this.postData.title
     });
   },
-
+  onShareAppMessage() {
+    return {
+      title:this.postData.title,
+      desc:this.postData.content,
+      path:'/pages/post/post-detail/post-detail'
+    }
+  },
+  setAniation:function(){
+    let animationUp =wx.createAnimation({
+      timingFunction:'ease-in-out'
+    });
+    this.animationUp = animationUp;
+  },
   /**
    * 生命周期函数--监听页面显示
    */

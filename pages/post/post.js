@@ -38,7 +38,12 @@ Page({
       url:`post-detail/post-detail?id=${postId}`
     })
   },
-
+  onSwiperTap:function(event){
+    let id = event.target.dataset.postId;
+    wx.navigateTo({
+      url: 'post-detail/post-detail?id='+id,
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
