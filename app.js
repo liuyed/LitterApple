@@ -47,6 +47,13 @@ App({
       wx.setStorageSync('postList', dataObj.postList);
     }
   },
+  onShow:function(obj) {
+    console.log(obj);
+    console.log('小程序从后台切换前台s展示show');
+  },
+  onHide:function() {
+    console.log('小程序从前台切换后台隐藏hide');
+  },
   globalData: {
     userInfo: null
   }

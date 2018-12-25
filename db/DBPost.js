@@ -61,8 +61,10 @@ class DBPost {
     let data = this.updatePostData('up');
     return data;
   }
-  updatePostData(category) {
-    debugger
+  newComment(newComment) {
+    this.updatePostData('comment',newComment);
+  }
+  updatePostData(category,newComment) {
     let itemData = this.getPostItemById(),
     postData = itemData.data,
     allPostData = this.getAllPostData();
@@ -86,6 +88,10 @@ class DBPost {
           postData.upStatus = false;
         }
         break;
+      case 'comment':
+      postData.comments.push(newComment);
+      postData.commentNum++;
+      break;
       default:
       break;
     }
