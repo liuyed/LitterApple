@@ -90,6 +90,16 @@ Page({
       textStyle: 'dark' // 下拉背景字体、loading 图的样式为dark
     })
   },
+  setTabBarItem:function(){
+    wx.setTabBarItem({
+      index: 0,
+      text:'爱你'
+    })
+    wx.setTabBarBadge({
+      index: 0,
+      text: '1'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
