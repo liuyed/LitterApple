@@ -79,6 +79,17 @@ Page({
       }
     })
   },
+  showNavBarLoading:function(){
+    wx.showNavigationBarLoading();
+    setTimeout(function(){
+      wx.hideNavigationBarLoading();
+    },2000)
+  },
+  setBgTextStyle:function() {
+    wx.setBackgroundTextStyle({
+      textStyle: 'dark' // 下拉背景字体、loading 图的样式为dark
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
