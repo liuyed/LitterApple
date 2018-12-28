@@ -1,0 +1,7 @@
+/* pages/movie/movie.wxss */
+.movie-wrap{
+  padding:30rpx 30rpx 0 30rpx;
+}
+button{
+  margin-bottom: 30rpx;
+}

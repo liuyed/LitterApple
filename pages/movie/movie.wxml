@@ -1,0 +1,12 @@
+<!--pages/movie/movie.wxml-->
+<view class="movie-wrap">
+  <button type='primary' loading="{{isLoading}}" plain='{{plain}}' catchtap='getIphoneSystemInfo'>获取本机信息</button>
+  <view wx:for="{{systemInfo}}" wx:for-index="key" wx:for-item="item">
+    {{key}} : {{item}}
+  </view>
+  <button type='warn' catchtap='showActionSheet'>显示操作菜单</button>
+  <button type='default' catchtap='showLoading'>显示loadings</button>
+  <button type='primary' plain="{{isPlain}}" catchtap='cancelLoading'>取消loading</button>
+  <button type='warn' plain="{{isPlain}}" catchtap='showToast'>显示消息提示框</button>
+  <button type="default" plain="{{isPlain}}" catchtap='showModal'>显示模态对话框</button>
+</view>

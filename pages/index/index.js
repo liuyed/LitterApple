@@ -12,8 +12,12 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
-      url: '../post/post'
+    // wx.navigateTo({
+    //   url: '../post/post'
+    // })
+    wx.switchTab({
+      url:'../post/post',
+      
     })
   },
   goLogsTap: function() {
