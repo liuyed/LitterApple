@@ -1,3 +1,4 @@
 {
-  "usingComponents": {}
+  "navigationBarBackgroundColor": "#ecc0a8",
+  "navigationBarTitleText": "Welcome"
 }

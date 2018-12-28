@@ -9,4 +9,5 @@
   <button type='primary' plain="{{isPlain}}" catchtap='cancelLoading'>取消loading</button>
   <button type='warn' plain="{{isPlain}}" catchtap='showToast'>显示消息提示框</button>
   <button type="default" plain="{{isPlain}}" catchtap='showModal'>显示模态对话框</button>
+  <button type="primary" catchtap='setNavBarColor'>设置导航条背景颜色</button>
 </view>
